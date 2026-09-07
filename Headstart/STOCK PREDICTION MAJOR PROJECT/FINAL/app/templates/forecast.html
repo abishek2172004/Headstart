@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecasting Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f4f6f9 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        header {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .logo {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        main {
+            padding: 30px;
+        }
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px;
+            font-size: 16px;
+        }
+        .form-group input[type="number"] {
+            padding: 12px;
+        }
+        .form-group button {
+            background-color: #003366;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .form-group button:hover {
+            background-color: #00509e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+            <h1>Forecasting Form</h1>
+        </div>
+    </header>
+    <main>
+        <div class="form-container">
+            <form action="{{ url_for('main.forecast_form') }}" method="POST">
+                <div class="form-group">
+                    <label for="sector">Select Sector:</label>
+                    <select id="sector" name="sector" required>
+                        <option value="" disabled selected>Select Sector</option>
+                        <option value="IT">Information Technology</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Real Estate">Real Estate</option>
+                        <option value="Energy">Energy</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Select Company:</label>
+                    <select id="company" name="company" required>
+                        <option value="" disabled selected>Select Company</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Investment Duration:</label>
+                    <select id="duration" name="duration" required>
+                        <option value="" disabled selected>Select Duration</option>
+                        <option value="1m">1 month</option>
+                        <option value="3m">3 months</option>
+                        <option value="5m">5 months</option>
+                        <option value="7m">7 months</option>
+                        <option value="10m">10 months</option>
+                        <option value="12m">1 year</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="investment_amount">Investment Amount ($):</label>
+                    <input type="number" id="investment_amount" name="investment_amount" min="0" step="any" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectorSelect = document.getElementById('sector');
+            const companySelect = document.getElementById('company');
+
+            sectorSelect.addEventListener('change', function() {
+                const sector = this.value;
+                const companies = {
+                    'IT': ['Google', 'Apple', 'Intel', 'Microsoft', 'Nvidia'],
+                    'Finance': ['Bank of America', 'Berkshire Hathaway', 'Goldman Sachs', 'JPMorgan', 'Wells Fargo'],
+                    'Healthcare': ['Abbvie', 'Johnson & Johnson', 'Merck', 'Pfizer', 'UnitedHealth'],
+                    'Real Estate': ['AvalonBay', 'Prologis Inc', 'Public Storage', 'Realty Income', 'Simon Property'],
+                    'Energy': ['Chevron Corporation', 'ConocoPhillips', 'Exxon Mobil', 'NextEra', 'Schlumberger']
+                };
+
+                companySelect.innerHTML = '<option value="" disabled selected>Select Company</option>';
+                if (sector in companies) {
+                    companies[sector].forEach(company => {
+                        const option = document.createElement('option');
+                        option.value = company;
+                        option.textContent = company;
+                        companySelect.appendChild(option);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

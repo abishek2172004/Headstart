@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Testing</title>
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+    
+        header {
+            background-color: #00204a;
+            color: white;
+            padding: 15px 0; /* Increased padding for better spacing */
+            text-align: center;
+            font-size: 1.5em; /* Responsive font size */
+        }
+    
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        nav ul li {
+            display: inline;
+            margin: 0 15px; /* Increased margin for better spacing */
+        }
+    
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+    
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+    
+        main {
+            padding: 20px 0;
+        }
+    
+        .plot-container {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            padding: 30px; /* Increased padding to fit plot and legend */
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .plot-content {
+            width: calc(100% - 60px); /* Adjust width to fit within padding */
+            height: 600px; /* Set a fixed height for better visibility */
+            margin: auto;
+        }
+    
+        .plot-description {
+            padding: 15px; /* Increased padding for better spacing */
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-top: 10px; /* Adjusted margin-top for better spacing */
+            text-align: justify;
+        }
+    
+        footer {
+            background-color: #00204a;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Stress Testing Results</h1>
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Stress Testing Plot</h4>
+            </div>
+            <div class="card-body plot-container">
+                <div class="plot-content">
+                    {{ stress_testing_plot | safe }}
+                </div>
+                <div class="plot-description">
+                    <p><strong>Stress Testing Plot:</strong> This graph visualizes the potential impacts of different stress scenarios on the investment portfolio. It shows how the portfolio might perform under extreme conditions such as severe market declines or sudden economic shifts. The plot helps in understanding potential vulnerabilities by demonstrating how different stress factors could affect overall portfolio stability and performance. This insight is crucial for identifying risks and implementing strategies to mitigate potential adverse effects.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Stress Impact Heatmap</h4>
+            </div>
+            <div class="card-body plot-container">
+                <div class="plot-content">
+                    {{ heatmap_plot | safe }}
+                </div>
+                <div class="plot-description">
+                    <p><strong>Stress Impact Heatmap:</strong> This heatmap illustrates the relative impact of various stress scenarios on different aspects of the portfolio. It provides a visual representation of how stress factors influence portfolio risk across multiple dimensions. The heatmap is useful for pinpointing areas of the portfolio that are most sensitive to stress, thereby helping in strategic risk management and adjustment. By analyzing the heatmap, you can gain a clearer understanding of where the portfolio might experience the most significant impacts during stress conditions.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

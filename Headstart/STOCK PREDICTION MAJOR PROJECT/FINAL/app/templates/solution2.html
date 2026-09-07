@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+    
+        header {
+            background-color: #00204a;
+            color: white;
+            padding: 15px 0; /* Increased padding for better spacing */
+            text-align: center;
+            font-size: 1.5em; /* Responsive font size */
+        }
+    
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        nav ul li {
+            display: inline;
+            margin: 0 15px; /* Increased margin for better spacing */
+        }
+    
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+    
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+    
+        main {
+            padding: 20px 0;
+        }
+    
+        .plot-container {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            padding: 30px; /* Increased padding to fit plot and legend */
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .plot-content {
+            width: calc(100% - 60px); /* Adjust width to fit within padding */
+            height: 600px; /* Set a fixed height for better visibility */
+            margin: auto;
+        }
+    
+        .plot-description {
+            padding: 15px; /* Increased padding for better spacing */
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-top: 10px;
+            text-align: justify;
+        }
+    
+        footer {
+            background-color: #00204a;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Risk Assessment Results</h1>
+
+        <!-- Risk Matrix Heatmap -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Risk Matrix Heatmap</h4>
+            </div>
+            <div class="card-body plot-container">
+                <div class="plot-description">
+                    <p>The Risk Matrix Heatmap displays the probability and severity of different risk events. Each cell represents a combination of likelihood and impact, giving a clear picture of the overall risk exposure.</p>
+                </div>
+                <div class="plot-content">
+                    {{ risk_plot | safe }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Monte Carlo Simulation -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Monte Carlo Simulation</h4>
+            </div>
+            <div class="card-body plot-container">
+                <div class="plot-description">
+                    <p>The Monte Carlo Simulation graph illustrates the potential future paths of your portfolio over time based on random sampling.</p>
+                </div>
+                <div class="plot-content">
+                    {{ monte_carlo_plot | safe }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Cumulative Return -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Cumulative Return</h4>
+            </div>
+            <div class="card-body plot-container">
+                <div class="plot-description">
+                    <p>The Cumulative Return graph shows how your portfolio’s value has changed over time, including the effect of compounding.</p>
+                </div>
+                <div class="plot-content">
+                    {{ cumulative_return_plot | safe }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Drawdown -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Drawdown</h4>
+            </div>
+            <div class="card-body plot-container">
+                <div class="plot-description">
+                    <p>The Drawdown graph illustrates the decline from the portfolio's peak value over time, helping you assess the risk of losing capital during downturns.</p>
+                </div>
+                <div class="plot-content">
+                    {{ drawdown_plot | safe }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk Metrics Overview (Half-Donut Chart) -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Risk Metrics Overview</h4>
+            </div>
+            <div class="card-body plot-container">
+                <div class="plot-description">
+                    <p>The Risk Metrics Half-Donut chart provides a visual summary of key risk metrics: Value at Risk (VaR), Expected Shortfall (ES), Max Drawdown, and Sharpe Ratio. These metrics give an overview of the risk and return trade-offs in your portfolio.</p>
+                </div>
+                
+                <!-- Adding the detailed explanations -->
+                <div class="risk-metrics-explanation">
+                    <h5>Risk (VaR - Value at Risk)</h5>
+                    <p>Value at Risk (VaR) is a measure used to estimate the potential loss of an investment over a specific period. It tells us the worst-case scenario that we can expect, with a certain level of confidence. For example, if the VaR is $1,000 at a 95% confidence level, it means there’s a 95% chance you won’t lose more than $1,000 in a given time frame. It's like a safety net number that helps us understand how much risk we're exposed to in bad market conditions.</p>
+        
+                    <h5>Expected Shortfall (ES)</h5>
+                    <p>Expected Shortfall (ES), also known as Conditional VaR, goes a step further than VaR. While VaR tells us the maximum expected loss, ES estimates the average loss if the worst-case scenario (beyond VaR) actually happens. So, if things go really wrong, ES gives us an idea of how much we could lose on average in those extreme situations. It helps us understand the severity of potential losses beyond our comfort zone.</p>
+        
+                    <h5>Max Drawdown</h5>
+                    <p>Max Drawdown measures the largest drop in value an investment experiences from its peak to its lowest point. Think of it as the steepest slide you could go down on. It tells us how much the investment can decline during tough times. A big drawdown means that the investment can be quite volatile, so it gives us a sense of how deep the lows could get.</p>
+        
+                    <h5>Sharpe Ratio</h5>
+                    <p>The Sharpe Ratio measures how much return you're getting for the amount of risk you're taking. It helps you determine whether the risk you're taking is worth the potential reward. A higher Sharpe Ratio means you're getting more return for each unit of risk, making it a valuable tool for comparing different investments. It helps us see if we're being compensated enough for the risks we take in an investment.</p>
+                </div>
+        
+                <div class="plot-content">
+                    {{ risk_metrics_plot | safe }}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- External libraries -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

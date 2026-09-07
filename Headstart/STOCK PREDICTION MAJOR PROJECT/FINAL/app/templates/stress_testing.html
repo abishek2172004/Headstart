@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Testing Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f4f6f9 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        header {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .logo {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        main {
+            padding: 30px;
+        }
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px;
+            font-size: 16px;
+        }
+        .form-group select[multiple] {
+            height: auto;
+            padding: 8px;
+        }
+        .form-group button, .form-group input[type="submit"] {
+            background-color: #003366;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .form-group button:hover, .form-group input[type="submit"]:hover {
+            background-color: #00509e;
+        }
+        .form-group .info-icon {
+            cursor: pointer;
+            color: #003366;
+            margin-left: 10px;
+        }
+        .form-group .info-icon:hover {
+            color: #00509e;
+        }
+        .form-group .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 14px;
+            width: 200px;
+            z-index: 1000;
+        }
+        .form-group:hover .tooltip {
+            display: block;
+        }
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent #333 transparent;
+            top: -16px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+            <h1>Stress Testing Form</h1>
+        </div>
+    </header>
+    <main>
+        <div class="form-container">
+            <form action="{{ url_for('main.stress_test_form') }}" method="POST">
+                <!-- Sector Selection -->
+                <div class="form-group">
+                    <label for="sector">Select Sector:</label>
+                    <select id="sector" name="sector" required>
+                        <option value="" disabled selected>Select Sector</option>
+                        <option value="IT">Information Technology</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Real Estate">Real Estate</option>
+                        <option value="Energy">Energy</option>
+                    </select>
+                    <i class="fas fa-info-circle info-icon" data-toggle="tooltip" data-placement="right" title="Choose the sector for stress testing."></i>
+                </div>
+
+                <!-- Company Selection -->
+                <div class="form-group">
+                    <label for="company">Select Company:</label>
+                    <select id="company" name="company" required>
+                        <option value="" disabled selected>Select Company</option>
+                        <!-- Companies will be dynamically loaded based on the selected sector -->
+                    </select>
+                    <div class="tooltip">Choose the company within the selected sector.</div>
+                </div>
+
+                <!-- Shock Percentage -->
+                <div class="form-group">
+                    <label for="shock_percentage">Shock Percentage (%):</label>
+                    <input type="number" id="shock_percentage" name="shock_percentage" step="0.01" min="0" max="100" required>
+                </div>
+
+                <!-- Stress Factors -->
+                <div class="form-group">
+                    <label for="stress_factors">Select Stress Factors:</label>
+                    <select id="stress_factors" name="stress_factors" multiple required>
+                        <option value="economic-downturn">Economic Downturn</option>
+                        <option value="market-volatility">Market Volatility</option>
+                        <option value="high-interest-rates">High Interest Rates</option>
+                        <option value="regulatory-changes">Regulatory Changes</option>
+                    </select>
+                </div>
+
+                <!-- Severity Level -->
+                <div class="form-group">
+                    <label for="severity_level">Select Severity Level:</label>
+                    <select id="severity_level" name="severity_level" required>
+                        <option value="mild">Mild</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="severe">Severe</option>
+                    </select>
+                </div>
+
+                <!-- Stress Duration -->
+                <div class="form-group">
+                    <label for="stress_duration">Stress Duration (days):</label>
+                    <input type="number" id="stress_duration" name="stress_duration" min="1" required>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <input type="submit" value="Run Stress Test">
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectorSelect = document.getElementById('sector');
+            const companySelect = document.getElementById('company');
+
+            sectorSelect.addEventListener('change', function() {
+                const sector = this.value;
+                const companies = {
+                    'IT': ['Google', 'Apple', 'Intel', 'Microsoft', 'Nvidia'],
+                    'Finance': ['Bank of America', 'Berkshire Hathaway', 'Goldman Sachs', 'JPMorgan', 'Wells Fargo'],
+                    'Healthcare': ['Abbvie', 'Johnson & Johnson', 'Merck', 'Pfizer', 'UnitedHealth'],
+                    'Real Estate': ['AvalonBay', 'Prologis Inc', 'Public Storage', 'Realty Income', 'Simon Property'],
+                    'Energy': ['Chevron Corporation', 'ConocoPhillips', 'Exxon Mobil', 'NextEra', 'Schlumberger']
+                };
+
+                companySelect.innerHTML = '<option value="" disabled selected>Select Company</option>';
+                if (sector in companies) {
+                    companies[sector].forEach(company => {
+                        const option = document.createElement('option');
+                        option.value = company;
+                        option.textContent = company;
+                        companySelect.appendChild(option);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

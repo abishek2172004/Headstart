@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
+
+  <title>Finexo</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+
+  <!-- Fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Owl Carousel stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- Font Awesome style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" />
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+  <!-- Responsive style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}" />
+
+  <style>
+    p{
+      text-align: justify;
+    }
+  </style>
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+
+    <div class="hero_bg_box">
+      <div class="bg_img_box">
+        <img src="images/hero-bg.png" alt="">
+      </div>
+    </div>
+
+    <!-- header section starts -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{{ url_for('main.home') }}">
+            <span>
+              HeadStart
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item ">
+                <a class="nav-link" href="{{ url_for('main.home') }}">Home</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('main.about') }}">About <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.service') }}">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.model') }}">Model</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.team') }}">Demo Profile</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+
+  <!-- about section -->
+
+<section class="about_section layout_padding">
+  <div class="container">
+      <div class="heading_container heading_center">
+          <h2>
+              About <span>Us</span>
+          </h2>
+          <p>
+              In today’s fast-paced and ever-changing financial landscape, staying informed and making timely, data-driven decisions is crucial for achieving success. Investors, businesses, and financial analysts need reliable, real-time information to navigate the complexities of the market. At HeadStart, we are committed to revolutionizing the way financial analysis is conducted by providing a robust platform that delivers comprehensive insights and advanced analytical tools.
+              HeadStart was founded with a singular vision: to democratize access to high-quality financial data and analytical capabilities. We understand that the financial markets can be overwhelming, with vast amounts of data scattered across various platforms. Our "Market Analysis" web application is designed to bridge this gap, making financial information accessible and actionable for everyone. By aggregating data from multiple reputable sources and presenting it in a user-friendly interface, we empower our users to make informed decisions that can lead to financial success.
+              <br><br>
+          </p>
+      </div>
+      <center><img src="{{ url_for('static', filename='images/about-img.png') }}" height="400px" width="450px"></center>
+      <br><br>
+      <div class="row">   
+          <br><br>  
+          <h3>
+              Our Vision
+          </h3>
+          <p>
+              To become the leading provider of real-time financial insights, transforming how people interact with and understand the financial markets.
+              <br>
+              We envision a world where every investor, regardless of their experience level, has the tools and information necessary to make confident, informed financial decisions. By continually innovating and improving our platform, we strive to be at the forefront of financial technology, setting new standards for accessibility, accuracy, and usability.
+          </p>
+          <h3>
+              Our Mission
+          </h3>
+          <p>
+              Our mission is to democratize financial information, making it accessible and actionable for everyone, from individual investors to large corporations.
+              <br>
+              HeadStart was founded on the belief that everyone deserves access to the same high-quality financial information that professionals use. Our mission is to provide users with the tools and data they need to make informed decisions that can lead to financial success. By offering real-time insights into economic indicators, market trends, and sector-specific analyses, we aim to level the playing field for all our users.
+          </p>
+          <h3>
+              Vision
+          </h3>
+          <p>
+              Our vision is to empower users with actionable insights and analytical tools that enhance their financial decision-making processes. We aim to provide a seamless and intuitive platform where users can access all necessary financial information in one place.
+          </p>
+      </div>
+  </div>
+</section>
+
+<!-- end about section -->
+
+<!-- info section -->
+
+<section class="info_section layout_padding2">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 col-lg-3 info_col">
+              <div class="info_contact">
+                  <h4>
+                      Address
+                  </h4>
+                  <div class="contact_link_box">
+                      <a href="">
+                          <i class="fa fa-map-marker" aria-hidden="true"></i>
+                          <span>
+                              Location
+                          </span>
+                      </a>
+                      <a href="">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          <span>
+                              Call +01 1234567890
+                          </span>
+                      </a>
+                      <a href="">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <span>
+                              demo@gmail.com
+                          </span>
+                      </a>
+                  </div>
+              </div>
+              <div class="info_social">
+                  <a href="">
+                      <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                      <i class="fa fa-twitter" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                      <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                      <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 info_col">
+              <div class="info_detail">
+                  <h4>
+                      Reach Us
+                  </h4>
+                  <p>
+                      You can reach us through mail, book an appointment to visit our office, or use any other social media platform to get a service customized to your needs. Hurry Up!
+                  </p>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-2 mx-auto info_col">
+              <div class="info_link_box">
+                  <h4>
+                      Links
+                  </h4>
+                  <div class="info_links">
+                      <a class="active" href="{{ url_for('main.home') }}">
+                          Home
+                      </a>
+                      <a href="{{ url_for('main.about') }}">
+                          About
+                      </a>
+                      <a href="{{ url_for('main.service') }}">
+                          Services
+                      </a>
+                      <a href="{{ url_for('main.model') }}">
+                          Model
+                      </a>
+                      <a href="{{ url_for('main.team') }}">
+                          Demo Profile
+                      </a>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 info_col">
+              <h4>
+                  Subscribe
+              </h4>
+              <form action="#">
+                  <input type="text" placeholder="Enter email" />
+                  <button type="submit">
+                      Subscribe
+                  </button>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <section class="footer_section">
+    <div class="container">
+      
+    </div>
+  </section>
+  <!-- Footer section -->
+
+  <!-- jQuery -->
+  <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+
+  <!-- Owl Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+</body>
+
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Analysis Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #00204a;
+        }
+    
+        /* Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #00204a;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+        nav a:hover {
+            background-color: #004080;
+            border-radius: 5px;
+        }
+    
+        /* Header */
+        header {
+            background-color: #00204a;
+            color: #ffffff;
+            padding: 20px;
+            border-bottom: 2px solid #004080;
+        }
+    
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        .header-container .logo {
+            height: 40px;
+        }
+    
+        .header-container h1 {
+            flex: 1;
+            text-align: center;
+            margin: 0;
+            font-size: 1.8em;
+        }
+    
+        /* Video Background */
+        #video-background {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            overflow: hidden;
+        }
+        video {
+            width: 100%;  /* Video spans the full width of the screen */
+            height: auto; /* Height adjusts automatically to maintain aspect ratio */
+        }
+        
+        #video-background video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        #video-background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        #video-background h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            z-index: 2;
+            font-size: 2em;
+            text-align: center;
+        }
+    
+        /* Services Section */
+        #services {
+            padding: 20px;
+            background-color: #f4f6f9;
+            text-align: center;
+        }
+        .service-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust minimum width */
+            gap: 30px;
+        }
+        .service-box {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px; /* Increased padding for more space */
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 2px solid #00204a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 300px; /* Set a specific height for consistency */
+        }
+        .service-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .service-box img {
+            width: 120px; /* Increased image width */
+            height: auto;
+            margin-bottom: 15px; /* Increased space below image */
+        }
+        .service-box h3 {
+            margin: 10px 0;
+            font-size: 1.4em; /* Slightly larger font size */
+            color: #00204a;
+        }
+        .service-box p {
+            font-size: 1em;
+            color: #666;
+        }
+    
+        /* Q&A Section */
+        #qna {
+            padding: 20px;
+            background-color: #f4f6f9;
+        }
+        #qna h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #00204a;
+        }
+        .qa-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #cce7ff;
+            border-radius: 8px;
+            background-color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .qa-item:hover {
+            background-color: #e6f0ff;
+        }
+        .qa-item h3 {
+            font-size: 1.2em;
+            margin: 0 0 10px 0;
+            color: #00204a;
+        }
+        .qa-item p {
+            font-size: 1em;
+            margin: 0;
+            color: #333;
+            line-height: 1.6;
+            display: none;
+        }
+        .qa-item.active p {
+            display: block;
+        }
+    
+        /* Get In Touch Section */
+        #get-in-touch {
+            padding: 20px;
+            background-color: #00204a;
+            color: #ffffff;
+            text-align: center;
+        }
+        #get-in-touch a {
+            color: #00bfff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    
+        /* Footer */
+        footer {
+            background-color: #00204a;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+        }
+        footer a {
+            color: #00bfff;
+            text-decoration: none;
+        }
+        footer .social-icons a {
+            margin: 0 10px;
+        }
+    
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #00204a;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            z-index: 1001;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#qna">Q&A</a></li>
+            <li><a href="#get-in-touch">Get in Touch</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <h1>Investment Analysis Tool</h1>
+            <img src="{{ url_for('static', filename='./images/Logo.png') }}" alt="Logo" class="logo">
+        </div>
+    </header>
+
+    <!-- Video Background -->
+    <div id="video-background">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='images/stock.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h2></h2>
+    </div>
+
+    <!-- Services Section -->
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="service-boxes">
+        <div class="service-box" onclick="loadPage('/market_trends')">
+            <img src="{{ url_for('static', filename='images/market_trends.jpg') }}" alt="Market Trends">
+            <h3>Market Insights</h3>
+            <p>Get the latest scoop on market trends and stay ahead of the curve.</p>
+        </div>
+        <div class="service-box" onclick="loadPage('/risk_assessment')">
+            <img src="{{ url_for('static', filename='images/risk.jpg') }}" alt="Risk Assessment">
+            <h3>Investment Safety Check</h3>
+            <p>See how secure your investments are and spot any potential risks.</p>
+        </div>
+        <div class="service-box" onclick="loadPage('/forecast')">
+            <img src="{{ url_for('static', filename='images/forecast.jpg') }}" alt="Forecasting">
+            <h3>Future Investment Predictions</h3>
+            <p>Forecast how your investments could perform tomorrow, today.</p>
+        </div>
+        <div class="service-box" onclick="loadPage('/stress_testing')">
+            <img src="{{ url_for('static', filename='images/stress_testing.jpg') }}" alt="Stress Testing">
+            <h3>Stress Test</h3>
+            <p>See how well your investments hold up against market storms.</p>
+        </div>
+        
+        <!--
+<div class="service-box" onclick="loadPage('/optimal_portfolio')">
+    <img src="{{ url_for('static', filename='images/optimizing_portfolio.jpg') }}" alt="Optimal Portfolio">
+    <h3>Portfolio Improvement</h3>
+    <p>Fine-tune your investments to boost returns and balance risk.</p>
+</div>
+--> 
+    </div>
+</section>
+
+
+    <!-- Q&A Section -->
+    <!-- Q&A Section -->
+<section id="qna">
+    <h2>Questions & Answers</h2>
+    <div class="qa-item" onclick="toggleAnswer('answer1')">
+        <h3>Q1: What is Volatility in finance?</h3>
+        <p id="answer1" class="answer">Volatility in finance refers to the degree of variation in the price of a financial instrument over time. It is a measure of risk that captures how much the price fluctuates. High volatility means that the price of an asset can change dramatically in a short period, which could lead to higher gains but also greater losses. Conversely, low volatility indicates more stable prices. Investors use volatility to assess risk and make informed decisions about their investments.</p>
+    </div>
+    <div class="qa-item" onclick="toggleAnswer('answer2')">
+        <h3>Q2: What is Diversification?</h3>
+        <p id="answer2" class="answer">Diversification is an investment strategy that involves spreading investments across various assets, sectors, or regions to reduce the overall risk. By not putting all your money into a single investment, you minimize the impact of a poor-performing asset on your overall portfolio. Diversification aims to balance risk and return, as different assets often react differently to market conditions. This strategy helps protect against significant losses if one investment underperforms.</p>
+    </div>
+    <div class="qa-item" onclick="toggleAnswer('answer3')">
+        <h3>Q3: How to assess market trends?</h3>
+        <p id="answer3" class="answer">Assessing market trends involves analyzing various factors to understand the overall direction of the market. This includes studying historical price data, economic indicators, and market news. Technical analysis uses charts and patterns to predict future movements, while fundamental analysis evaluates economic factors, company performance, and financial statements. Combining these approaches provides a comprehensive view of whether the market is trending upwards, downwards, or sideways, helping investors make informed decisions.</p>
+    </div>
+    <div class="qa-item" onclick="toggleAnswer('answer4')">
+        <h3>Q4: What is Portfolio Optimization?</h3>
+        <p id="answer4" class="answer">Portfolio optimization is the process of selecting the best mix of investments to achieve specific financial goals while managing risk. It involves determining the optimal asset allocation that maximizes returns for a given level of risk or minimizes risk for a target return. Techniques such as Modern Portfolio Theory (MPT) use mathematical models to balance asset weights and diversify investments to create an efficient portfolio. This ensures that investors get the best possible performance from their investments relative to their risk tolerance.</p>
+    </div>
+    <div class="qa-item" onclick="toggleAnswer('answer5')">
+        <h3>Q5: How do you calculate risk-adjusted returns?</h3>
+        <p id="answer5" class="answer">Risk-adjusted returns measure how well an investment performs relative to the risk taken. Common metrics include the Sharpe Ratio, which compares the excess return of an investment to its standard deviation, and the Sortino Ratio, which focuses on downside risk. These ratios help investors understand if the returns justify the level of risk taken. For example, a higher Sharpe Ratio indicates better risk-adjusted performance, suggesting that the investment is providing more return for each unit of risk.</p>
+    </div>
+    <div class="qa-item" onclick="toggleAnswer('answer6')">
+        <h3>Q6: What are economic indicators?</h3>
+        <p id="answer6" class="answer">Economic indicators are statistical metrics that provide insights into the health and direction of an economy. Key indicators include Gross Domestic Product (GDP), which measures overall economic output; inflation rates, which indicate changes in the cost of living; and unemployment rates, which show the percentage of people without jobs. These indicators help investors understand economic trends, anticipate market movements, and make informed investment decisions based on the economic environment.</p>
+    </div>
+</section>
+
+
+
+    <!-- Get in Touch Section -->
+    <section id="get-in-touch">
+        <h2>Ready to Take Control of Your Investments?</h2>
+        <p>Contact us for a personalized consultation.</p>
+        <a href="mailto:info@investmentanalysis.com">info@investmentanalysis.com</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="social-icons">
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://www.twitter.com" target="_blank">Twitter</a>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to toggle Q&A answers
+        function toggleAnswer(id) {
+            var answer = document.getElementById(id);
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Function to simulate page loading
+        function loadPage(url) {
+            var spinner = document.getElementById('loadingSpinner');
+            spinner.style.display = 'block';
+            setTimeout(function() {
+                window.location.href = url;
+            }, 1500); // Simulate a delay before redirect
+        }
+    </script>
+
+</body>
+</html>

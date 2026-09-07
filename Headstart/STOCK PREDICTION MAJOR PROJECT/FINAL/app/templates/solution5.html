@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Solution</title>
+</head>
+<body>
+    <h1>Portfolio Optimization Results</h1>
+
+    <h2>Risk-Return Scatter</h2>
+    {{ risk_return_scatter|safe }}
+
+    <h2>Sector Performance</h2>
+    {{ sector_performance|safe }}
+
+    <h2>Company Allocation</h2>
+    {{ company_pie|safe }}
+
+    <h2>Sector Allocation</h2>
+    {{ sector_pie|safe }}
+
+    <h2>Performance Metrics</h2>
+    <div>
+        {{ performance_metrics|safe }}
+    </div>
+
+    <h2>Investment Breakdown</h2>
+    <div>
+        {{ investment_breakdown|safe }}
+    </div>
+
+</body>
+</html>

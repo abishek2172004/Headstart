@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast Analysis</title>
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+    
+        header {
+            background-color: #00204a;
+            color: white;
+            padding: 15px 0; /* Increased padding for better spacing */
+            text-align: center;
+            font-size: 1.5em; /* Responsive font size */
+        }
+    
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        nav ul li {
+            display: inline;
+            margin: 0 15px; /* Increased margin for better spacing */
+        }
+    
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+    
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+    
+        main {
+            padding: 20px 0;
+        }
+    
+        .plot-container {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            padding: 30px; /* Increased padding to fit plot and legend */
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .plot-content {
+            width: calc(100% - 60px); /* Adjust width to fit within padding */
+            height: 600px; /* Set a fixed height for better visibility */
+            margin: auto;
+        }
+    
+        .plot-description {
+            padding: 15px; /* Increased padding for better spacing */
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-top: 10px; /* Adjusted margin-top for better spacing */
+            text-align: justify;
+        }
+    
+        footer {
+            background-color: #00204a;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Forecast Analysis</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section>
+                <h2>Forecast for Sector: {{ sector }}</h2>
+                <h2>Company: {{ company }}</h2>
+                <h3>Forecast Duration: {{ duration }} days</h3>
+                <h3>Initial Investment: ${{ investment_amount }}</h3>
+                
+                <div class="plot-container">
+                    <h3>Forecasted Prices</h3>
+                    <div class="plot-content">
+                        {{ forecast_plot|safe }}
+                    </div>
+                    <div class="plot-description">
+                        <p><strong>Forecasted Prices:</strong> This graph displays the predicted prices of the selected company's stock over the specified forecast period. It shows the expected price movements based on historical data and modeling techniques. By analyzing these forecasted prices, you can assess potential future performance and make informed investment decisions.</p>
+                    </div>
+                </div>
+                
+                <div class="plot-container">
+                    <h3>Investment Returns</h3>
+                    <div class="plot-content">
+                        {{ returns_plot|safe }}
+                    </div>
+                    <div class="plot-description">
+                        <p><strong>Investment Returns:</strong> This graph illustrates the projected returns on the investment over the forecast period. It highlights the potential gains or losses relative to the initial investment amount. Understanding these returns helps in evaluating the profitability and risk associated with the investment strategy.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024 Investment Forecasting. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

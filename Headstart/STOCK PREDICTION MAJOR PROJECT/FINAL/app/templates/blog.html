@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="">
+  <title>Blog</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Body Style */
+    body {
+      background-color: #f0f4f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header Style */
+    header {
+      background-color: #00204a;
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    /* Blog Section Styles */
+    .blog-section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-section img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .blog-section h2 {
+      color: #00204a;
+      margin-bottom: 15px;
+    }
+
+    .blog-section p {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .blog-section:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Footer Style */
+    footer {
+      background-color: #00204a;
+      color: #ffffff;
+      text-align: center;
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>Our Blog</h1>
+</header>
+
+<!-- Blog Section 1: Data Dashboards -->
+<div class="blog-section">
+    <img src="{{ url_for('static', filename='images/Dashboard 4.jpg') }}" alt="Data Dashboards Image">
+    <h2>How Data Dashboards Help in Better Understanding of Data</h2>
+    <p>
+        Data dashboards are essential tools for visualizing complex data sets in a simplified manner. For businesses, especially in the financial sector, they provide a consolidated view of various key performance indicators (KPIs), allowing stakeholders to make informed decisions quickly. Dashboards can handle messy and unstructured data by offering a visual representation, making it easier to spot trends, outliers, and patterns that might not be immediately evident in raw data. This capability is crucial for small-scale and startup financial businesses, where understanding and responding to market conditions swiftly can be the difference between success and failure.
+    </p>
+</div>
+
+<!-- Blog Section 2: Deep Learning Investment Risk Analyzer -->
+<div class="blog-section">
+    <img src="{{ url_for('static', filename='images/Investment_Risk.png') }}" alt="Deep Learning Investment Risk Analyzer Image">
+    <h2>Deep Learning Investment Risk Analyzer for Smarter Investment Decisions</h2>
+    <p>
+        The integration of deep learning technologies in investment risk analysis has revolutionized how financial risks are assessed. These systems use vast amounts of historical data to identify patterns and predict future market conditions with high accuracy. For small-scale and startup financial businesses, a deep learning-based Investment Risk Analyzer can offer precise, personalized risk assessments, enabling smarter investment decisions. These tools are not only cost-effective but also provide a level of insight and accuracy that traditional methods cannot match, making them invaluable for businesses looking to optimize their investment strategies.
+    </p>
+</div>
+
+<!-- Blog Section 3: Fragmented Data Issues -->
+<div class="blog-section">
+    <img src="{{ url_for('static', filename='images/Understanding-Data-Fragmentation.png') }}" alt="Fragmented Data Image">
+    <h2>Why Fragmented Data is a Problem for Financial Firms</h2>
+    <p>
+        Fragmented data is a significant challenge for financial businesses, particularly startups and smaller firms. When data is scattered across different systems or exists in various formats, it becomes challenging to compile a coherent and comprehensive view of business operations or market trends. This fragmentation can lead to inaccurate analyses, poor decision-making, and ultimately, lost opportunities. For small-scale financial businesses, integrating data from disparate sources into a unified system is critical to ensuring reliable, timely insights that can drive growth and competitive advantage.
+    </p>
+</div>
+
+<!-- Footer -->
+<footer>
+    &copy; 2024 Financial Insights Blog
+</footer>
+
+</body>
+</html>

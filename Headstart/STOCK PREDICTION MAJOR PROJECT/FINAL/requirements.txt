@@ -1,0 +1,6 @@
+Flask
+pandas
+arch
+numpy
+scipy
+tensorflow 

@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
+
+  <title>Finexo</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+
+  <!-- Fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Owl Carousel stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- Font Awesome style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" />
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+  <!-- Responsive style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}" />
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .services-header {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .services-header h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .services-header h3 {
+        color: #00008B;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    .nav-pills .nav-link.active {
+        background-color: #00008B;
+    }
+    .nav-pills .nav-link {
+        color: #000;
+    }
+    .service-description {
+        margin-top: 50px;
+        margin-left: -50px;
+        text-align: justify;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .service-description img {
+        max-width: 100%;
+        height: auto;
+    }
+    .service-text {
+        max-width: 600px;
+    }
+    .service-text h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .service-text p {
+        font-size: 1rem;
+        color: #666;
+    }
+    .service-description.right img {
+        order: 2;
+    }
+    .service-description.right .service-text {
+        order: 1;
+    }
+</style>
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+
+    <div class="hero_bg_box">
+      <div class="bg_img_box">
+        <img src="{{ url_for('static', filename='images/hero-bg.png') }}" alt="">
+      </div>
+    </div>
+
+    <!-- header section starts -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="{{ url_for('main.home') }}">
+            <span>
+              HeadStart
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.home') }}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.about') }}">About</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('main.service') }}">Services <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.model') }}">Model</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.team') }}">Demo Profile</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+  </div>
+
+
+  <!-- service section -->
+<div class="container">
+  <div class="services-header">
+    <h3>OUR SERVICES</h3>
+    <h2>Bunch of Services to Rock Your Business</h2>
+  </div>
+
+  <div class="service-description">
+    <img src="{{ url_for('static', filename='images/Data Collection and Segregation2.jpg') }}" alt="Data Collection and Segregation Image" class="img-fluid" height="775" width="575">
+    <div class="service-text">
+      <h3>Data Collection and Segregation</h3>
+      <p>Our service offers a streamlined solution to aggregate your data from different databases into a single, accessible location without any hassle or complications. By connecting to various data sources, we automate the extraction, transformation, and loading (ETL) processes, ensuring that all your critical information is consolidated in one place. This eliminates the need for manual data handling and reduces the risk of errors, providing you with a seamless and efficient data management experience.</p>
+      <p>With our advanced data segregation capabilities, we categorize and organize your data based on predefined criteria, making it easy to find and utilize specific datasets. Our secure and compliant solution ensures that your data is handled with the highest standards, empowering your financial services to operate more efficiently and make data-driven decisions. This comprehensive approach not only simplifies data management but also enhances your ability to leverage valuable insights for improved operational performance and a competitive edge.</p>
+    </div>
+  </div>
+
+  <p>_____________________________________________________________________________________________________________________________</p>
+
+  <div class="service-description right">
+    <img src="{{ url_for('static', filename='images/Investment.jpg') }}" alt="Investment Image" class="img-fluid" height="775" width="575">
+    <div class="service-text">
+      <h3>Signature Investment Model</h3>
+      <p>Our signature feature, the Investment Risk Model, is a sophisticated tool designed to guide customers through the complexities of stock market investments. Users can choose from a comprehensive list of primary stocks, define their investment amount and duration, and the model will analyze extensive historical data to generate accurate predictions. These predictions outline a range of possible outcomes, including potential profits and losses, offering a clear understanding of the associated risks.</p>
+      <p>The model provides tailored investment recommendations based on its analysis, advising users on whether to proceed with their chosen investments. This personalized approach not only helps investors make informed decisions but also optimizes their investment strategies by highlighting the most favorable opportunities. By integrating real-time data and continuous updates, the Investment Risk Model ensures that users can navigate the market with confidence, enhancing their ability to achieve better financial results while effectively managing risk.</p>
+    </div>
+  </div>
+
+  <p>_____________________________________________________________________________________________________________________________</p>
+
+  <div class="service-description">
+    <img src="{{ url_for('static', filename='images/Dashboard.jpg') }}" alt="Custom Interactive Dashboards Image" class="img-fluid" height="775" width="575">
+    <div class="service-text">
+      <h3>Custom Interactive Dashboards</h3>
+      <p>Our Custom Interactive Dashboards provide a dynamic way to visualize your data and evaluate your company's overall performance. Tailored to meet your specific needs, these dashboards integrate seamlessly with your existing data sources, offering real-time insights through visually engaging and easy-to-understand charts and graphs. By consolidating key metrics and performance indicators into one interactive interface, you can quickly identify trends, monitor progress, and make data-driven decisions with confidence.</p>
+      <p>Designed for flexibility and user-friendliness, our dashboards allow you to customize views, filter data, and drill down into detailed reports. This level of customization ensures that you can focus on the most relevant information for your business objectives. Whether tracking financial performance, operational efficiency, or market trends, our Custom Interactive Dashboards empower you with the tools to enhance your analytical capabilities and drive strategic growth.</p>
+    </div>
+  </div>
+  <br><br>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- end service section -->
+
+<!-- info section -->
+<section class="info_section layout_padding2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 info_col">
+        <div class="info_contact">
+          <h4>Address</h4>
+          <div class="contact_link_box">
+            <a href="#">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>Location</span>
+            </a>
+            <a href="#">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>Call +01 1234567890</span>
+            </a>
+            <a href="#">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>demo@gmail.com</span>
+            </a>
+          </div>
+        </div>
+        <div class="info_social">
+          <a href="#">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 info_col">
+        <div class="info_detail">
+          <h4>Reach Us</h4>
+          <p>You can reach us through mail, book an appointment to visit our office, or through any other social media platform to get a service customized to your needs. Hurry Up!</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-2 mx-auto info_col">
+        <div class="info_link_box">
+          <h4>Links</h4>
+          <div class="info_links">
+            <a class="active" href="{{ url_for('main.home') }}">Home</a>
+            <a href="{{ url_for('main.about') }}">About</a>
+            <a href="{{ url_for('main.service') }}">Services</a>
+            <a href="{{ url_for('main.model') }}">Model</a>
+            <a href="{{ url_for('main.team') }}">Demo Profile</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 info_col">
+        <h4>Subscribe</h4>
+        <form action="#">
+          <input type="text" placeholder="Enter email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end info section -->
+
+
+  <!-- footer section -->
+  <section class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
+  </section>
+  <!-- Footer section -->
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap JS -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+
+  <!-- Owl Carousel JS -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <!-- Custom JS -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+</body>
+
+</html>

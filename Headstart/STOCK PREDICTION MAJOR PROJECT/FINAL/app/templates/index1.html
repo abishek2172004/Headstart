@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+
+  <title>HeadStart</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+  <!-- Fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Owl Carousel stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- Font Awesome style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" />
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <!-- Responsive style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+  <!-- Slick carousel styles -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .team_section {
+      padding: 60px 0;
+      background-color: #00204a;
+      color: #00204a;
+    }
+
+    .heading_container {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .heading_container h2 {
+      font-size: 2.5em;
+      color: #00204a;
+    }
+
+    .heading_container span {
+      color: #1abc9c;
+    }
+
+    .team_slider .box {
+      background: -webkit-gradient(linear, left top, left bottom, from(#002759), to(#002b64));
+      background: linear-gradient(to bottom, #002759, #002b64);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 0 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    .img-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .team_slider .img-box img {
+      width: 100%;
+      border-radius: 50%;
+      max-width: 150px;
+      margin-bottom: 15px;
+    }
+
+    .team_slider h5 {
+      color: #00bbf0;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+    .team_slider p {
+      color: #ffffff;
+      font-size: 1em;
+      margin-bottom: 15px;
+    }
+
+    .social_box a {
+      color: #ffffff;
+      font-size: 20px;
+      margin: 0 5px;
+      transition: color 0.3s ease;
+    }
+
+    .social_box a:hover {
+      color: #00bbf0;
+    }
+    .form-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(8px); /* Blurs the background */
+  }
+
+  .form-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  body.modal-open {
+    overflow: hidden; /* Prevents scrolling when the modal is open */
+  }
+  .centered-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; /* Set width to 50% */
+    max-width: 50%; /* Ensures the image doesn't overflow */
+  }
+
+  .spacer {
+    margin: 50px 0; /* Adds space between images */
+  }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero_area">
+
+    <div class="hero_bg_box">
+      <div class="bg_img_box">
+        <img src="{{ url_for('static', filename='images/hero-bg.png') }}" alt="Hero Background Image">
+      </div>
+    </div>
+
+    <!-- header section starts -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <img src="{{ url_for('static', filename='images/Logo.png') }}" alt="Logo" height="40">
+          <a class="navbar-brand" href="{{ url_for('main.home') }}">
+            <span>
+              HeadStart
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('main.home') }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.service') }}">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.model') }}">Model</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.team') }}">News</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h1>
+                      Messy <br>
+                      Statistics?
+                    </h1>
+                    <p>
+                      Unlock clarity with HeadStart’s intuitive, custom dashboards—transform complex data into clear, actionable insights effortlessly.
+                    </p>
+                    <div class="btn-box">
+                      <a href="{{ url_for('main.blog') }}" class="btn1">
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{{ url_for('static', filename='images/slider-img.png') }}" alt="Slider Image 1">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h1>
+                      Investment <br>
+                      Risks?
+                    </h1>
+                    <p>
+                      Discover HeadStart’s deep learning Investment Risk Analyzer—your key to precise, personalized risk assessments and smarter investment decisions.
+                    </p>
+                    <div class="btn-box">
+                      <a href="{{ url_for('main.blog') }}" class="btn1">
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{{ url_for('static', filename='images/slider-img2.png') }}" alt="Slider Image 2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h1>
+                      Fragmented <br>
+                      Data?
+                    </h1>
+                    <p>
+                      Consolidate effortlessly with HeadStart’s integrated solutions—bringing all your data together for a clear, unified view.
+                    </p>
+                    <div class="btn-box">
+                      <a href="{{ url_for('main.blog') }}" class="btn1">
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{{ url_for('static', filename='images/slider-img3.png') }}" alt="Slider Image 3">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel1" data-slide-to="1"></li>
+          <li data-target="#customCarousel1" data-slide-to="2"></li>
+        </ol>
+      </div>
+    </section>
+    
+    <!-- end slider section -->
+  </div>
+
+
+  <!-- service section -->
+
+  <section class="service_section layout_padding">
+    <div class="service_container">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>
+            Our <span>Services</span>
+          </h2>
+          <p>
+            Our services are highly customer-centric and aim to help smaller factions grow. Some primary services include the below-mentioned.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="box">
+              <div class="img-box">
+                <img src="{{ url_for('static', filename='images/s1.png') }}" alt="Investment Model">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Investment Model
+                </h5>
+                <p>
+                  A predictive model for primary stocks to practice investment and analyze
+                  the risk of investment in different time frames.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box">
+              <div class="img-box">
+                <img src="{{ url_for('static', filename='images/s2.png') }}" alt="Data Collection">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Data Collection
+                </h5>
+                <p>
+                  Find your data from different databases represented in one
+                  location without any hassle and complications.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box">
+              <div class="img-box">
+                <img src="{{ url_for('static', filename='images/s3.png') }}" alt="Custom Dashboards">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Custom Dashboards
+                </h5>
+                <p>
+                  Custom Interactive Dashboards to visualize your data and evaluate 
+                  the overall performance of your company.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-box">
+          <a href="{{ url_for('main.service') }}">
+            View All
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- end service section -->
+
+
+  <!-- about section -->
+
+  <!-- About Section -->
+<section class="about_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+        About <span>Us</span>
+      </h2>
+      <p>
+        To empower users with actionable insights and analytical tools that enhance their financial decision-making processes
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/about-img.png') }}" alt="About Us">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="detail-box">
+          <h3>
+            We Are HeadStart
+          </h3>
+          <p>
+            Our company is dedicated to transforming the way financial analysts and small businesses approach investment decision-making. We recognize the challenges posed by data fragmentation, where critical financial information is scattered across multiple sources, making it difficult for users to obtain a comprehensive and coherent understanding of the market. To address this, we have developed a comprehensive web platform designed to be a one-stop solution for all financial analysis needs.
+          </p>
+          <a href="{{ url_for('main.about') }}">
+            Read More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End About Section -->
+
+<!-- Why Section -->
+<section class="why_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+        Why Choose <span>Us</span>
+      </h2>
+    </div>
+    <div class="why_container">
+      <div class="box">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/w1.png') }}" alt="Expert Management">
+        </div>
+        <div class="detail-box">
+          <h5>
+            Expert Management
+          </h5>
+          <p>
+            At HeadStart, our expert management team brings decades of experience, deep industry knowledge, and strategic vision. We ensure rigorous risk management and personalized client relationships, tailoring strategies to your unique financial goals. Under innovative leadership, we offer cutting-edge solutions in a dynamic financial landscape. Trust HeadStart for unparalleled expertise and dedicated service in managing your financial future.
+          </p>
+        </div>
+      </div>
+      <div class="box">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/w2.png') }}" alt="Secure and Custom Websites">
+        </div>
+        <div class="detail-box">
+          <h5>
+            Secure and Custom Websites
+          </h5>
+          <p>
+            At HeadStart, we specialize in creating custom websites for financial startups, ensuring complete data privacy and security. We guarantee that no third party, including us, retains any of your data. Our dedication to safeguarding your information allows you to focus on growing your business with confidence, knowing your sensitive data remains entirely within your control. Trust HeadStart for secure, bespoke website solutions tailored to your unique needs.
+          </p>
+        </div>
+      </div>
+      <div class="box">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/w3.png') }}" alt="Innovative Investment Risk Analyzer">
+        </div>
+        <div class="detail-box">
+          <h5>
+            Innovative Investment Risk Analyzer
+          </h5>
+          <p>
+            HeadStart introduces its flagship Demo Investment Risk Analyzer, powered by advanced deep learning technology. This cutting-edge tool provides precise risk assessments based on capital and time period, offering personalized insights to optimize your investment strategy. With a user-friendly interface, our analyzer makes complex risk analysis accessible and straightforward. Trust HeadStart to leverage the latest technology for informed, secure investment decisions, setting us apart as a leader in financial innovation.
+          </p>
+        </div>
+      </div>
+      <div class="box">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/w4.png') }}" alt="Happy Customers">
+        </div>
+        <div class="detail-box">
+          <h5>
+            Happy Customers
+          </h5>
+          <p>
+            At HeadStart, our success is measured by the satisfaction of our clients. We pride ourselves on building lasting relationships through exceptional service and results. Our personalized approach, attention to detail, and commitment to excellence have earned us a loyal and happy customer base. We go above and beyond to ensure your financial success, making us a trusted partner for all your financial needs. Trust HeadStart to deliver the outstanding service and support that our clients rave about.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Why Section -->
+
+<br><br><br>
+<div class="heading_container heading_center">
+  <h2>
+    <span>Our Dashboards</span>
+  </h2>
+</div>
+
+
+<div class="spacer"></div>
+<img src="{{ url_for('static', filename='images/C1.jpg') }}" class="centered-img" alt="Abhiram S Nair">
+<div class="spacer"></div>
+
+<img src="{{ url_for('static', filename='images/C2.jpg') }}" class="centered-img" alt="Amogh D R">
+<div class="spacer"></div><div class="spacer"></div>
+
+
+
+<img src="{{ url_for('static', filename='images/C3.jpg') }}" class="centered-img" alt="Deependra Singh Rao">
+<div class="spacer"></div>
+
+<img src="{{ url_for('static', filename='images/S1.jpg') }}" class="centered-img" alt="John Jerry">
+<div class="spacer"></div>
+<!-- Team Section -->
+<section class="team_section layout_padding">
+  <div class="container-fluid">
+    <div class="heading_container heading_center">
+      <h2>
+        <span>Our Team</span>
+      </h2>
+    </div>
+    <div class="team_slider">
+      <div class="box">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/Abhiram.jpg') }}" class="img1" alt="Abhiram S Nair" height="175" width="200">
+        </div>
+        <div class="detail-box">
+          <h5>Abhiram S Nair</h5>
+          <p>Chief Technical Engineer</p>
+        </div>
+        <div class="social_box">
+          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <!-- Repeat the above div for each team member -->
+      <div class="box">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/THARKURI.PNG') }}" class="img1" alt="Amogh D R" height="175" width="200">
+        </div>
+        <div class="detail-box">
+          <h5>Amogh D R</h5>
+          <p>Financial Analyst</p>
+        </div>
+        <div class="social_box">
+          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="box">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/Deep.JPG') }}" class="img1" alt="Deependra Singh Rao" height="175" width="200">
+        </div>
+        <div class="detail-box">
+          <h5>Deependra Singh Rao</h5>
+          <p>UI/UX Designer</p>
+        </div>
+        <div class="social_box">
+          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="box">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/me.jpg') }}" class="img1" alt="John Jerry" height="175" width="200">
+        </div>
+        <div class="detail-box">
+          <h5>John Jerry</h5>
+          <p>ML/DL Engineer</p>
+        </div>
+        <div class="social_box">
+          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="box">
+        <div class="img-box">
+          <img src="{{ url_for('static', filename='images/Prem.jpeg') }}" class="img1" alt="Prem Thyagarajan" height="175" width="200">
+        </div>
+        <div class="detail-box">
+          <h5>Prem Thyagarajan</h5>
+          <p>Database Engineer</p>
+        </div>
+        <div class="social_box">
+          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Team Section -->
+
+    <!-- End Team Section -->
+    
+
+  <!-- client section -->
+  
+  <!-- client section -->
+
+<!-- end info section -->
+
+
+
+  <!-- end client section -->
+
+
+<!-- info section -->
+<section class="info_section layout_padding2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 info_col">
+        <div class="info_contact">
+          <h4>Address</h4>
+          <div class="contact_link_box">
+            <a href="#">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>Location</span>
+            </a>
+            <a href="#">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>Call +01 1234567890</span>
+            </a>
+            <a href="#">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>demo@gmail.com</span>
+            </a>
+          </div>
+        </div>
+        <div class="info_social">
+          <a href="#">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 info_col">
+        <div class="info_detail">
+          <h4>Reach Us</h4>
+          <p>
+            You can reach us through mail, book an appointment to visit our office, or by any other social media platform to get a service customized to your needs. Hurry Up!
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-2 mx-auto info_col">
+        <div class="info_link_box">
+          <h4>Links</h4>
+          <div class="info_links">
+            <a class="active" href="{{ url_for('main.home') }}">Home</a>
+            <a href="{{ url_for('main.about') }}">About</a>
+            <a href="{{ url_for('main.service') }}">Services</a>
+            <a href="{{ url_for('main.why') }}">Model</a>
+            <a href="{{ url_for('main.team') }}">Demo Profile</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 info_col">
+        <h4>Subscribe</h4>
+        <button id="subscribeButton" onclick="showForm()" class="btn btn-primary">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end info section -->
+
+<!-- end info section -->
+
+<!-- Contact Form Modal -->
+<div id="formModal" class="form-modal" style="display: none;">
+  <div class="form-content">
+    <div class="relative w-full flex items-center justify-center">
+      <div class="rounded-lg border bg-card text-card-foreground shadow-sm relative z-10 max-w-md w-full p-6 sm:p-8">
+        <div class="flex flex-col space-y-1.5 p-6">
+          <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Contact Us</h3>
+          <p class="text-sm text-muted-foreground">Fill out the form below to send us a message.</p>
+        </div>
+        <div class="p-6">
+          <form class="space-y-4">
+            <div class="grid gap-3">
+              <div class="grid gap-1">
+                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Name    </label>
+                <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="name" placeholder="Your name" />
+              </div>
+              <div class="grid gap-1">
+                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Email   </label>
+                <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="email" placeholder="you@example.com" type="email" />
+              </div>
+              <div class="grid gap-1">
+                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="subject">Subject </label>
+                <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="subject" placeholder="Message subject" />
+              </div>
+              <div class="grid gap-1">
+                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="message">Message </label>
+                <textarea class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="message" rows="4" placeholder="Write your message..."></textarea>
+              </div>
+            </div>
+            <!-- Add the Submit Button here -->
+            <div class="flex justify-between items-center pt-4">
+              <button type="submit" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
+                Submit
+              </button>
+              <button onclick="hideForm()" type="button" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/90 h-10 px-4 py-2">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- footer section -->
+  <section class="footer_section">
+    <div class="container">
+      
+    </div>
+  </section>
+  <!-- Footer section -->
+
+  <!-- jQuery -->
+  <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+
+  <!-- Owl Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+  <!-- Slick Carousel JS -->
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+
+  <!-- JavaScript to Show and Hide Form -->
+  <script>
+    function showForm() {
+      var formModal = document.getElementById('formModal');
+      formModal.style.display = 'flex';
+      document.body.classList.add('modal-open'); // Prevents scrolling
+    }
+
+    function hideForm() {
+      var formModal = document.getElementById('formModal');
+      formModal.style.display = 'none';
+      document.body.classList.remove('modal-open'); // Re-enables scrolling
+    }
+
+    $(document).ready(function(){
+      $('.team_slider').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        responsive: [
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+    });
+  </script>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Headstart_chatbot"
+  agent-id="0d16eb4b-50ed-48c6-b69f-c33557aa8d88"
+  language-code="en"
+></df-messenger>
+</body>
+
+</html>
