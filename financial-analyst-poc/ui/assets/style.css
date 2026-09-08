@@ -1,0 +1,203 @@
+:root {
+    --bg-color: #0b1014;
+    --surface: #111920;
+    --surface-raised: #172129;
+    --text-color: #edf4f0;
+    --text-muted: #8fa19b;
+    --border-color: #29383d;
+    --primary-color: #74d3ad;
+    --primary-strong: #43bd90;
+    --font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+.stApp {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+}
+
+.main .block-container {
+    max-width: 1440px;
+    padding: 2.25rem 3.5rem 4rem;
+}
+
+[data-testid="stSidebar"] {
+    background: #0e151a;
+    border-right: 1px solid var(--border-color);
+}
+
+[data-testid="stSidebar"] > div:first-child { padding: 2rem 1.2rem; }
+[data-testid="stSidebar"] * { color: var(--text-color) !important; }
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.35rem 0.25rem 1.8rem;
+}
+
+.sidebar-mark {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: #092018 !important;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.sidebar-name { font-size: 1.05rem; font-weight: 750; line-height: 1.1; }
+.sidebar-tagline { color: var(--text-muted); font-size: 0.7rem; margin-top: 0.25rem; }
+[data-testid="stSidebar"] hr { border-color: var(--border-color); margin: 1rem 0 1.15rem; }
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label {
+    padding: 0.55rem 0.7rem;
+    border-radius: 6px;
+    color: var(--text-muted) !important;
+    font-size: 0.86rem;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
+    background: var(--surface-raised);
+    color: var(--text-color) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
+    background: rgba(116, 211, 173, 0.12);
+    color: var(--primary-color) !important;
+}
+
+.hero-shell {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 190px;
+    margin: 0 0 2rem;
+    padding: 2.25rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: linear-gradient(110deg, #13221f 0%, #111920 58%, #17202a 100%);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+}
+
+.hero-copy h1 { margin: 0.35rem 0 0 !important; font-size: clamp(2.4rem, 5vw, 4.25rem) !important; line-height: 0.95; letter-spacing: -0.08rem; }
+.eyebrow, .assistant-kicker, .suggestion-label { color: var(--primary-color); font-size: 0.68rem; font-weight: 750; letter-spacing: 0.13rem; text-transform: uppercase; }
+.hero-subtitle { margin: 0.9rem 0 0; color: var(--text-muted) !important; font-size: 0.95rem; }
+.brand-blue { color: #c9f3df; }
+.brand-green { color: var(--primary-color); }
+
+.hero-status, .assistant-status {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid rgba(116, 211, 173, 0.25);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+.status-dot { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--primary-color); box-shadow: 0 0 0 4px rgba(116, 211, 173, 0.12); }
+
+h1, h2, h3, h4 { color: var(--text-color) !important; font-weight: 700 !important; letter-spacing: 0; }
+h2 { margin-top: 0.25rem !important; font-size: 1.65rem !important; }
+h3 { font-size: 1rem !important; }
+.stMarkdown, .stCaption, [data-testid="stText"] { color: var(--text-color) !important; }
+
+[data-testid="stMetric"] {
+    min-height: 108px;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+[data-testid="stMetricLabel"] { color: var(--text-muted) !important; font-size: 0.74rem !important; text-transform: uppercase; letter-spacing: 0.06rem; }
+[data-testid="stMetricValue"] { color: var(--text-color) !important; font-size: 1.65rem !important; font-weight: 700 !important; }
+[data-testid="stMetricDelta"] { font-weight: 650 !important; }
+
+.css-card { margin-bottom: 0.6rem; padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--surface); }
+
+.stButton button, .stFormSubmitButton button {
+    min-height: 2.55rem;
+    border: 1px solid var(--primary-strong) !important;
+    border-radius: 6px !important;
+    background: var(--primary-strong) !important;
+    color: #07150f !important;
+    font-weight: 700 !important;
+    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.stButton button:hover, .stFormSubmitButton button:hover { border-color: var(--primary-color) !important; background: var(--primary-color) !important; transform: translateY(-1px); }
+
+.stTextInput input, .stNumberInput input, [data-baseweb="select"] > div, [data-testid="stTextArea"] textarea {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px !important;
+    background: var(--surface) !important;
+    color: var(--text-color) !important;
+}
+
+.stTextInput input:focus, .stNumberInput input:focus, [data-baseweb="select"] > div:focus-within, [data-testid="stTextArea"] textarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 2px rgba(116, 211, 173, 0.14) !important;
+}
+
+label, .stTextInput label, .stNumberInput label, [data-baseweb="select"] label { color: var(--text-muted) !important; font-size: 0.78rem !important; }
+.stTabs [data-baseweb="tab-list"] { gap: 0.2rem; border-bottom: 1px solid var(--border-color); }
+.stTabs [data-baseweb="tab-list"] button { color: var(--text-muted) !important; }
+.stTabs [data-baseweb="tab-list"] button[aria-selected="true"] { color: var(--primary-color) !important; }
+.stAlert { border-radius: 7px !important; border: 1px solid var(--border-color) !important; background: var(--surface) !important; color: var(--text-color) !important; }
+
+.assistant-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 0 0 1.6rem;
+    padding: 1.65rem 1.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+.assistant-title { margin: 0.5rem 0 0 !important; font-size: 2rem !important; letter-spacing: -0.03rem; }
+.assistant-lede { max-width: 38rem; margin: 0.65rem 0 0; color: var(--text-muted) !important; line-height: 1.5; }
+.suggestion-label { margin: 0.75rem 0 0.6rem; color: var(--text-muted); letter-spacing: 0.08rem; }
+.conversation-heading { margin: 2rem 0 0.75rem; color: var(--text-color); font-size: 1rem; font-weight: 700; }
+
+.assistant-empty {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 120px;
+    padding: 1.25rem 1.4rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    background: rgba(17, 25, 32, 0.55);
+}
+
+.assistant-empty-mark { display: grid; width: 2.2rem; height: 2.2rem; place-items: center; border-radius: 6px; background: rgba(116, 211, 173, 0.12); color: var(--primary-color); font-size: 1.25rem; }
+.assistant-empty p { margin: 0.35rem 0 0; color: var(--text-muted); font-size: 0.85rem; }
+
+.chat-row { display: flex; width: 100%; margin: 0.8rem 0; }
+.chat-row.user { justify-content: flex-end; }
+.chat-row.bot { justify-content: flex-start; }
+.chat-bubble { max-width: 78%; padding: 0.85rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--surface); color: var(--text-color); line-height: 1.5; word-break: break-word; }
+.chat-row.user .chat-bubble { background: rgba(116, 211, 173, 0.12); border-color: rgba(116, 211, 173, 0.25); }
+.chat-role { margin-bottom: 0.35rem; color: var(--primary-color); font-size: 0.68rem; font-weight: 750; letter-spacing: 0.08rem; text-transform: uppercase; }
+.chat-meta { margin-top: 0.45rem; color: var(--text-muted); font-size: 0.7rem; }
+.stChatMessage { border: 0 !important; background: transparent !important; }
+[data-testid="stChatMessageContent"] { border: 1px solid var(--border-color) !important; border-radius: 8px !important; background: var(--surface) !important; color: var(--text-color) !important; }
+.js-plotly-plot .plotly .main-svg { background: transparent !important; }
+
+@media (max-width: 800px) {
+    .main .block-container { padding: 1.25rem 1rem 3rem; }
+    .hero-shell, .assistant-header { align-items: flex-start; flex-direction: column; min-height: auto; padding: 1.35rem; }
+    .hero-status, .assistant-status { align-self: stretch; }
+}
